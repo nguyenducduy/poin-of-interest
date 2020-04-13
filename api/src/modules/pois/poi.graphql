@@ -1,0 +1,71 @@
+type PoiType {
+  id: Int!
+  name: String
+  similar: [String]
+  ggSimilar: [String]
+  dateCreated: JSON
+}
+
+type PoiInfo {
+  type: PoiType
+  id: Int!
+  name: String
+  similar: [String]
+  number: String
+  street: String
+  ward: Region
+  district: Region
+  city: Region
+  lat: Float
+  lng: Float
+  website: String
+  phoneNumber: String
+  rating: Float
+  ggFullAddress: String
+  status: Int!
+  notes: [PoiNote]
+  dateCreated: JSON
+}
+
+type PoiNote {
+  id: Int!
+  text: String
+  dateCreated: JSON
+}
+
+type PoiTypes {
+  items: [PoiType]
+  meta: PaginationMeta!
+}
+
+type PoiInfos {
+  items: [PoiInfo]
+  meta: PaginationMeta!
+}
+
+type Query {
+  testPlace(name: String): JSON!
+  getPoiTypes(opts: JSON!): PoiTypes
+  searchPoiTypes(q: String): [PoiType]
+  getPoiInfos(opts: JSON!): PoiInfos
+  getPoiInfo(id: Int!): PoiInfo
+  getPoiNotes(piid: Int!): [PoiNote]
+}
+
+type Mutation {
+  # importPoi: Int!
+  importPoiType: Int!
+  updatePoiTypeSimilar(id: Int!, input: JSON!): PoiType!
+  updatePoiTypeGgSimilar(id: Int!, input: JSON!): PoiType!
+  removePoiTypeSimilarItem(id: Int!, input: JSON!): PoiType!
+  removePoiTypeGgSimilarItem(id: Int!, input: JSON!): PoiType!
+  removePoiType(id: Int!): Boolean!
+  changePoiType(id: Int!, typeId: Int!): PoiInfo!
+  uploadOctoparse(file: Upload): Int
+  changeStatus(id: Int!, status: Int!): PoiInfo!
+  updatePoiInfo(id: Int!, input: JSON!): PoiInfo!
+  addPoiNote(input: JSON!): PoiNote!
+  removePoiNote(id: Int!): Boolean!
+  addPoiType(input: JSON!): PoiType!
+}
+

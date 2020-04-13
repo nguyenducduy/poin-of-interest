@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "es2015", "es2015.promise"],
+    "module": "es2015",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "noImplicitAny": false,
+    "noImplicitThis": false,
+    "strictNullChecks": false,
+    "removeComments": true,
+    "suppressImplicitAnyIndexErrors": false,
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "emitDecoratorMetadata": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./*"],
+      "~/middleware/*": ["./middleware/*"]
+    }
+  },
+  "include": [
+    "**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
