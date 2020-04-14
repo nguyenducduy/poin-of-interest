@@ -13,7 +13,7 @@ async function bootstrap() {
     const app = await NestFactory.create(AppModule, instance);
     app.listen(9001, process.env.NODE_ENV === "prod" ? "0.0.0.0" : "");
 
-    console.log("Application is listening on port 9000");
+    console.log("Application is listening on port 9001");
 }
 
 bootstrap();
