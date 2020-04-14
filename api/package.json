@@ -1,12 +1,12 @@
 {
-  "name": "olli-poi-api",
+  "name": "api-point-of-interest",
   "version": "1.0.0",
-  "description": "OLLI POI Api",
+  "description": "Poin of Interest",
   "scripts": {
     "dev": "NODE_ENV=dev ts-node-dev --fast --respawn --no-deps src/main.ts --project tsconfig.json",
     "start": "NODE_ENV=prod ts-node src/main.ts --env=NODE_ENV --project tsconfig.json"
   },
-  "author": "Duy <duy@olli-ai.com>",
+  "author": "Duy <nguyenducduy.it@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "@google/maps": "^0.5.3",
