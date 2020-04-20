@@ -7,7 +7,7 @@
         <div class="panel-body">
           <div class="brand">
             <img class="brand-img" src="/img/logo.png" width="100">
-            <h1 class="brand-text font-size-18">POI</h1>
+            <h1 class="brand-text font-size-18">Point Of Interest</h1>
           </div>
           <el-form autoComplete="on" label-position="left" label-width="0px" class="login-form" :model="loginForm" ref="loginForm">
             <el-form-item prop="email" :rules="[
@@ -67,8 +67,8 @@ import { Action } from 'vuex-class';
 export default class AdminLoginPage extends Vue {
   loading: boolean = false;
   loginForm: any = {
-    email: null,
-    password: null
+    email: 'admin@mksoftware.com',
+    password: '1'
   };
 
   $refs: {

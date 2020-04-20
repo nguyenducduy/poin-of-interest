@@ -1,26 +1,36 @@
 <template>
-    <el-aside class="el-col-1 wrapp-sidebar">
-      <el-col :span="24">
-        <nuxt-link to="/">
-          <div class="logo"><img src="/img/logo-olli.png" width="40"></div>
-        </nuxt-link>
-      </el-col>
-      <el-col :span="24">
-        <el-menu expand-trigger="hover" unique-opened :default-active="$route.path" router :collapse="isCollapse">
-          <template>
-            <el-menu-item index="/" >
-              <i class="el-icon-fa-braille"></i> <span>Types</span>
-            </el-menu-item>
-            <!-- <el-menu-item>
+  <el-aside class="el-col-1 wrapp-sidebar">
+    <el-col :span="24">
+      <nuxt-link to="/">
+        <div class="logo">
+          <img src="/img/logo.png" width="40" />
+        </div>
+      </nuxt-link>
+    </el-col>
+    <el-col :span="24">
+      <el-menu
+        expand-trigger="hover"
+        unique-opened
+        :default-active="$route.path"
+        router
+        :collapse="isCollapse"
+      >
+        <template>
+          <el-menu-item index="/">
+            <i class="el-icon-fa-braille"></i>
+            <span>Types</span>
+          </el-menu-item>
+          <!-- <el-menu-item>
               <i class="el-icon-fa-bank"></i> Building
-            </el-menu-item> -->
-            <el-menu-item index="/info">
-              <i class="el-icon-fa-map-marker"></i> <span>Infomation</span>
-            </el-menu-item>
-          </template>
-        </el-menu>
-      </el-col>
-    </el-aside>
+          </el-menu-item>-->
+          <el-menu-item index="/info">
+            <i class="el-icon-fa-map-marker"></i>
+            <span>Infomation</span>
+          </el-menu-item>
+        </template>
+      </el-menu>
+    </el-col>
+  </el-aside>
 </template>
 
 <script lang="ts">
@@ -53,7 +63,7 @@ export default class Sidebar extends Vue {
     height: auto;
     visibility: visible;
   }
-  .el-menu--collapse > .el-menu-item .el-submenu__icon-arrow{
+  .el-menu--collapse > .el-menu-item .el-submenu__icon-arrow {
     display: block;
   }
 
@@ -61,8 +71,7 @@ export default class Sidebar extends Vue {
     border: 0;
     position: relative;
     z-index: 1;
-    .el-menu-item
-    {
+    .el-menu-item {
       height: 30px;
       line-height: 30px;
       border-right: 2px solid transparent;
@@ -99,7 +108,6 @@ export default class Sidebar extends Vue {
         background: transparent;
         border-color: #409eff;
         color: #409eff;
-
       }
       &:hover {
         left: 0;
@@ -118,16 +126,12 @@ export default class Sidebar extends Vue {
             font-size: 16px;
           }
         }
-
-
       }
     }
   }
   .el-submenu.is-opened .el-icon-fa {
-
     border-color: #409eff;
     color: #409eff;
-
   }
   .el-menu--popup-right-start {
     margin-left: 0;
@@ -140,5 +144,4 @@ export default class Sidebar extends Vue {
     }
   }
 }
-
 </style>

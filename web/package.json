@@ -1,7 +1,7 @@
 {
   "name": "web-point-of-interest",
   "version": "1.0.0",
-  "description": "Poin of Interest",
+  "description": "Point of Interest",
   "scripts": {
     "dev": "cross-env NODE_ENV=dev nuxt",
     "build": "cross-env HOST=0.0.0.0 PORT=3001 NODE_ENV=prod nuxt build",

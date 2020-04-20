@@ -1,28 +1,22 @@
 <template>
-  <el-popover
-    :key="id"
-    placement="left-start"
-    trigger="click"
-    v-model="visible"
-    width="500">
+  <el-popover :key="id" placement="left-start" trigger="manual" v-model="visible" width="500">
     <el-row>
       <el-col :span="20">
         <el-input
           type="textarea"
           placeholder="Write something"
           :autosize="{ minRows: 2 }"
-          v-model="note">
-        </el-input>
+          v-model="note"
+        ></el-input>
       </el-col>
       <el-col :span="4">
         <el-button
-          type="primary"
+          type="text"
           size="small"
           class="add-button"
           @click="onAdd()"
-          :loading="addLoading">
-          Add
-        </el-button>
+          :loading="addLoading"
+        >Write</el-button>
       </el-col>
     </el-row>
     <el-row>
@@ -40,53 +34,54 @@
               type="text"
               icon="el-icon-fa-trash"
               class="note-del-button"
-              @click="onDelete(scope.row.id)">
-            </el-button>
+              @click="onDelete(scope.row.id)"
+            ></el-button>
           </template>
         </el-table-column>
       </el-table>
     </el-row>
 
     <el-button
-      slot="reference" @click="onShow()"
+      slot="reference"
+      @click="onShow()"
       :icon="!visible ? 'el-icon-fa-book' : 'el-icon-fa-times'"
       circle
       size="mini"
       :type="hasNote ? 'warning' : ''"
       :loading="localLoading"
-      class="note-button">
-    </el-button>
+      class="note-button"
+    ></el-button>
   </el-popover>
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'nuxt-property-decorator';
-import { Action, State } from 'vuex-class';
+import { Vue, Component, Prop } from "nuxt-property-decorator";
+import { Action, State } from "vuex-class";
 
 @Component({
   notifications: {
     addSuccess: {
-      icon: 'fas fa-check',
-      position: 'bottomRight',
-      title: 'Note',
+      icon: "fas fa-check",
+      position: "bottomRight",
+      title: "Note",
       toastOnce: true,
-      type: 'success'
+      type: "success"
     },
     deleteSuccess: {
-      icon: 'fas fa-check',
-      position: 'bottomRight',
-      title: 'Note',
+      icon: "fas fa-check",
+      position: "bottomRight",
+      title: "Note",
       toastOnce: true,
-      type: 'success'
+      type: "success"
     }
   }
 })
 export default class Note extends Vue {
   @Prop() id: number; // poi info id
   @Prop() hasNote: boolean;
-  @Action('notes/add') addNoteAction;
-  @Action('notes/get_all') getNotesAction;
-  @Action('notes/delete') deleteNoteAction;
+  @Action("notes/add") addNoteAction;
+  @Action("notes/get_all") getNotesAction;
+  @Action("notes/delete") deleteNoteAction;
   @State(state => state.notes.loading) loading;
   @State(state => state.notes.addLoading) addLoading;
   @State(state => state.notes.deleteLoading) deleteLoading;
@@ -94,7 +89,7 @@ export default class Note extends Vue {
 
   localLoading: boolean = false;
   visible: boolean = false;
-  note: string = '';
+  note: string = "";
 
   addSuccess: ({ message: string, timeout: number }) => void;
   deleteSuccess: ({ message: string, timeout: number }) => void;
@@ -107,28 +102,30 @@ export default class Note extends Vue {
   }
 
   async onAdd() {
-    const errors = await this.addNoteAction({ value: {
-      piid: this.id,
-      text: this.note
-    } });
+    const errors = await this.addNoteAction({
+      value: {
+        piid: this.id,
+        text: this.note
+      }
+    });
 
-    if (typeof errors === 'undefined') {
-      this.note = '';
+    if (typeof errors === "undefined") {
+      this.note = "";
       this.addSuccess({
-        message: 'Added',
+        message: "Added",
         timeout: 1000
-      })
+      });
     }
   }
 
   async onDelete(id) {
     const errors = await this.deleteNoteAction({ id: id });
 
-    if (typeof errors === 'undefined') {
+    if (typeof errors === "undefined") {
       this.deleteSuccess({
-        message: 'Deleted',
+        message: "Deleted",
         timeout: 1000
-      })
+      });
     }
   }
 }
@@ -153,7 +150,7 @@ export default class Note extends Vue {
 .note-date {
   color: #a2a2a2;
 }
-.el-table--enable-row-hover .el-table__body tr:hover>td {
+.el-table--enable-row-hover .el-table__body tr:hover > td {
   background-color: #ffff002e;
 }
 .note-del-button {
